@@ -11,4 +11,13 @@ def destinations(request):
 def news(request):
     return render(request,"news.html")
 def elements(request):
-    return render(request,"elements.html")    
+    return render(request,"elements.html")   
+def search(request):
+    products=productdetails.objects.all().filter(name__icontains=request.GET['prodName'], 
+                                                desc__icontains=request.GET['manufacturerName'])
+    filteredProducts = []
+    for product in products:
+        if(product.price < int(request.GET['searchPrice'])):
+            filteredProducts.append(product)
+    return render(request,"search.html",{"products":filteredProducts})   
+ 

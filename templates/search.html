@@ -160,12 +160,15 @@
 					<div class="home_search_container">
 						<div class="home_search_title">Search for your product</div>
 						<div class="home_search_content">
-							<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
-								<input type="text" id='searchText' class="search_input search_input_1" placeholder="Product" required="required">
-								<input type="text" id='searchManufacturer' class="search_input search_input_2" placeholder="Manufacturer" >
-								<input type="text" id='searchPrice' class="search_input search_input_3" placeholder="Price" >
-								<button onclick="searchProduct()"  class="home_search_button">search</button>
-							</div>
+							<form action="#" class="home_search_form" id="home_search_form">
+								<div class="d-flex flex-lg-row flex-column align-items-start justify-content-lg-between justify-content-start">
+									<input type="text" class="search_input search_input_1" placeholder="Product" required="required">
+									<input type="text" class="search_input search_input_2" placeholder="Departure" required="required">
+									<input type="text" class="search_input search_input_3" placeholder="Arrival" required="required">
+									<input type="text" class="search_input search_input_4" placeholder="Budget" required="required">
+									<button class="home_search_button">search</button>
+								</div>
+							</form>
 						</div>
 					</div>
 				</div>
@@ -505,12 +508,5 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 <script src="{%static 'plugins/easing/easing.js' %}"></script>
 <script src="{%static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
 <script src="{%static 'js/custom.js' %}"></script>
-<script>
-    function searchProduct(){
-		window.location.href='http://127.0.0.1:8000/search?prodName='+document.getElementById('searchText').value 
-		+ '&manufacturerName='+document.getElementById('searchManufacturer').value
-		+ '&searchPrice='+document.getElementById('searchPrice').value;
-    }
-</script>
 </body>
 </html>
