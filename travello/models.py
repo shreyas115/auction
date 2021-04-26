@@ -11,3 +11,8 @@ class productdetails(models.Model):
     img=models.ImageField(upload_to='pics')
     desc=models.CharField(max_length=100)
     price=models.IntegerField()
+class auctiondetails(models.Model):
+    product_id=models.IntegerField()
+    product_specifications=models.TextField()
+    current_bid=models.IntegerField()
+    closing_time=models.DateTimeField()

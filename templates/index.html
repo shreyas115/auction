@@ -28,10 +28,10 @@
 				<div class="col">
 					<div class="header_content d-flex flex-row align-items-center justify-content-start">
 						<div class="header_content_inner d-flex flex-row align-items-end justify-content-start">
-							<div class="logo"><a href="index.html">Auction</a></div>
+							<div class="logo"><a href="">Auction</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li class="active"><a href="index.html">Home</a></li>
+									<li class="active"><a href="">Home</a></li>
 									<li><a href="about.html">About us</a></li>
 									<li><a href="#">Services</a></li>
 									<li><a href="news">News</a></li>
@@ -240,11 +240,11 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{{prod.img.url}}" alt="">
+								<img src="{{prod.img.url}}" alt="" style="width: 200px; height: 200px;" onclick="">
 								<div class="spec_offer text-center"><a href="#">Closing soon!!</a></div>
 							</div>
 							<div class="destination_content">
-								<div class="destination_title"><a href="destinations.html">{{prod.name}}</a></div>
+								<div class="destination_title"><a onclick="GoToProductDetails('{{prod.product_id}}')">{{prod.name}}</a></div>
 								<div class="destination_subtitle"><p>{{prod.desc}}</p></div>
 								<div class="destination_price">{{prod.price}}</div>
 							</div>
@@ -510,6 +510,9 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
 		window.location.href='http://127.0.0.1:8000/search?prodName='+document.getElementById('searchText').value 
 		+ '&manufacturerName='+document.getElementById('searchManufacturer').value
 		+ '&searchPrice='+document.getElementById('searchPrice').value;
+    }
+	function GoToProductDetails(prodId){
+		window.location.href='http://127.0.0.1:8000/destinations?prodId='+prodId;
     }
 </script>
 </body>
