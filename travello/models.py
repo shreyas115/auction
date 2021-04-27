@@ -1,10 +1,13 @@
 from django.db import models
 
 # Create your models here.
-class producthunt(models.Model):
-    idtest=models.IntegerField()
-    testcol=models.CharField(max_length=3)
-    testcol1=models.CharField(max_length=3)
+class user(models.Model):
+    username=models.CharField(max_length=30)
+    password=models.CharField(max_length=30)
+    first_name=models.CharField(max_length=30)
+    last_name=models.CharField(max_length=30)
+    phone_no=models.IntegerField()
+    email=models.CharField(max_length=30)
 class productdetails(models.Model):
     product_id=models.IntegerField()
     name=models.CharField(max_length=30)
@@ -16,3 +19,8 @@ class auctiondetails(models.Model):
     product_specifications=models.TextField()
     current_bid=models.IntegerField()
     closing_time=models.DateTimeField()
+class auction_history(models.Model):
+    auction_id=models.IntegerField()
+    product_id=models.IntegerField()
+    username=models.CharField(max_length=30)
+    auction_value=models.IntegerField()

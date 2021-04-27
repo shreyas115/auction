@@ -7,7 +7,6 @@ def index(request):
 def contact(request):
     return render(request,"contact.html")    
 def destinations(request):
-    #products=productdetails.objects.all()
     auctionProduct = auctiondetails.objects.get(product_id=int(request.GET['prodId']))
     product = productdetails.objects.get(product_id=int(request.GET['prodId']))
     print('auctioned product', auctionProduct)
