@@ -1,6 +1,6 @@
 from django.shortcuts import render
-from .models import productdetails, auctiondetails
-# Create your views here.
+from .models import productdetails, auctiondetails, auction_history
+
 def index(request):
     products=productdetails.objects.all()
     return render(request,"index.html",{"products":products})
@@ -8,10 +8,9 @@ def contact(request):
     return render(request,"contact.html")    
 def destinations(request):
     auctionProduct = auctiondetails.objects.get(product_id=int(request.GET['prodId']))
+    auctionHistory = auction_history.objects.filter(product_id=int(request.GET['prodId']))
     product = productdetails.objects.get(product_id=int(request.GET['prodId']))
-    print('auctioned product', auctionProduct)
-    return render(request,"destinations.html", {"selectedProduct":product, "auctionedProduct": auctionProduct})
-   
+    return render(request,"destinations.html", {"selectedProduct":product, "auctionedProduct": auctionProduct, "auctionHistory":auctionHistory}) 
 def news(request):
     return render(request,"news.html")
 def elements(request):
