@@ -1,5 +1,5 @@
 from django.db import models
-
+import datetime
 # Create your models here.
 class user(models.Model):
     username=models.CharField(max_length=30)
@@ -20,7 +20,9 @@ class auctiondetails(models.Model):
     current_bid=models.IntegerField()
     closing_time=models.DateTimeField()
 class auction_history(models.Model):
-    auction_id=models.IntegerField()
     product_id=models.IntegerField()
     username=models.CharField(max_length=30)
     auction_value=models.IntegerField()
+    phone_no=models.IntegerField(default=0)
+    email=models.CharField(max_length=30,default="")
+    date=models.DateField(default=datetime.datetime.now)

@@ -212,14 +212,15 @@
 							<div class="newsletter_subtitle">Join the auction NOW!</div>
 						</div>
 						<div class="newsletter_form_container">
-							<form action="#" class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between" id="newsletter_form">
+							<form action="#" method="post" class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between" id="newsletter_form">
+								{%csrf_token%}
 								<div class="d-flex flex-md-row flex-column align-items-start justify-content-between">
-									<div style="margin-right:10px;"><input type="text"  class="newsletter_input newsletter_input_name" id="newsletter_input_name" placeholder="Name" required="required"><div class="input_border"></div></div>
-									<div style="margin-right:10px;"><input type="text"  class="newsletter_input newsletter_input_email" id="phoneno" placeholder="Phone no" required="required"><div class="input_border"></div></div>
-									<div style="margin-right:10px;"><input type="email" class="newsletter_input newsletter_input_email" id="newsletter_input_email" placeholder="E-mail" required="required"><div class="input_border"></div></div>
-									<div style="margin-right:10px;width: 100px;"><input type="text"   class="newsletter_input newsletter_input_email" id="bidamnt" placeholder="Bid amount" required="required"><div class="input_border"></div></div>
+									<div style="margin-right:10px;"><input type="text"  class="newsletter_input newsletter_input_name" id="bidname" name="bidname" placeholder="Name" required="required"><div class="input_border"></div></div>
+									<div style="margin-right:10px;"><input type="text"  class="newsletter_input newsletter_input_email" id="phoneno" name="phoneno" placeholder="Phone no" required="required"><div class="input_border"></div></div>
+									<div style="margin-right:10px;"><input type="email" class="newsletter_input newsletter_input_email" id="email" name="email" placeholder="E-mail" required="required"><div class="input_border"></div></div>
+									<div style="margin-right:10px;width: 100px;"><input type="text" class="newsletter_input newsletter_input_email" id="bidamnt" name="bidamnt" placeholder="Bid amount" required="required"><div class="input_border"></div></div>
 								</div>
-								<div><button class="newsletter_button">Bid</button></div>
+								<div><button type="submit" class="newsletter_button">Bid</button></div>
 							</form>
 						</div>
 					</div>
