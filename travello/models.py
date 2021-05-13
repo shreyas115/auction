@@ -6,7 +6,7 @@ class user(models.Model):
     password=models.CharField(max_length=30)
     first_name=models.CharField(max_length=30)
     last_name=models.CharField(max_length=30)
-    phone_no=models.IntegerField()
+    phone_no=models.CharField(max_length=30,default="")
     email=models.CharField(max_length=30)
 class productdetails(models.Model):
     product_id=models.IntegerField()
@@ -23,6 +23,6 @@ class auction_history(models.Model):
     product_id=models.IntegerField()
     username=models.CharField(max_length=30)
     auction_value=models.IntegerField()
-    phone_no=models.IntegerField(default=0)
+    phone_no=models.CharField(max_length=20,default="")
     email=models.CharField(max_length=30,default="")
     date=models.DateField(default=datetime.datetime.now)
