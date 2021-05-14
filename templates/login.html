@@ -132,9 +132,10 @@
 							<div class="home_search_content" style="border-radius: 10px;">
 								<div class="d-flex flex-lg-row flex-row align-items-start justify-content-lg-between justify-content-start">
 									<input type="text" id='userName' name='userName' style="width: 40%;" class="search_input search_input_1" placeholder="Username" required="required">
-									<input type="password" id='password' name="password" style="width: 40%;" class="search_input search_input_2" placeholder="Password">
+									<input type="password" id='password' name="password" style="width: 40%;" class="search_input search_input_2" placeholder="Password" required="required">
 									<button type="submit"  class="home_search_button">Login</button>
 								</div>
+								<a href="http://127.0.0.1:8000/register">Register</a>
 								{% if messages %}
 									<ul class="messages" style="align-items: center; color: red;width: 60%;float: right;font-weight: bold;">
 										{% for message in messages %}

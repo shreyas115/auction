@@ -31,7 +31,7 @@
 							<div class="logo"><a href="">Auction</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li class="active"><a href="/">Home</a></li>
+									<li class="active"><a href="">Home</a></li>
 									<li><a href="about.html">About us</a></li>
 									<li><a href="#">Services</a></li>
 									<li><a href="news">News</a></li>
@@ -67,12 +67,12 @@
 
 	<div class="menu">
 		<div class="menu_header d-flex flex-row align-items-center justify-content-start">
-			<div class="menu_logo"><a href="">Auction</a></div>
+			<div class="menu_logo"><a href="index.html">Auction</a></div>
 			<div class="menu_close_container ml-auto"><div class="menu_close"><div></div><div></div></div></div>
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="index.html">Home</a></li>
+				<li><a href="inex.html">Home</a></li>
 				<li><a href="about.html">About us</a></li>
 				<li><a href="#">Services</a></li>
 				<li><a href="news">News</a></li>
@@ -102,45 +102,13 @@
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(static/images/home_slider.jpg)"></div>
+					<div class="background_image" style="background-image:url(static/images/login.png)"></div>
 					<div class="home_slider_content_container">
 						<div class="container">
 							<div class="row">
 								<div class="col">
 									<div class="home_slider_content">
-										<div class="home_title"><h2>Let's start bidding</h2></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Slide -->
-				<div class="owl-item">
-					<div class="background_image" style="background-image:url(static/images/home_slider.jpg)"></div>
-					<div class="home_slider_content_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_slider_content">
-										<div class="home_title"><h2>What are you waiting for?</h2></div>
-									</div>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Slide -->
-				<div class="owl-item">
-					<div class="background_image" style="background-image:url(static/images/home_slider.jpg)"></div>
-					<div class="home_slider_content_container">
-						<div class="container">
-							<div class="row">
-								<div class="col">
-									<div class="home_slider_content">
-										<div class="home_title"><h2>You could be the winner!!!</h2></div>
+										<div class="home_title"><h2>Register to start bidding</h2></div>
 									</div>
 								</div>
 							</div>
@@ -151,65 +119,41 @@
 		</div>
 	</div>
 
+	<!-- Search -->
 
-	<!-- Destinations -->
-
-	<div class="destinations" id="destinations">
+	<div class="home_search">
 		<div class="container">
 			<div class="row">
-				<div class="col text-center">
-					<div class="section_title"><h2>Product Details</h2></div>
-				</div>
-			</div>
-			<div class="row destinations_row">
 				<div class="col">
-					<div class="destinations_container item_grid" style="width: 100%;">
-						<!-- Product -->
-						<div class="destination item" style="float:left;width:100%;display: flex;">
-							<div class="destination_image">
-								<img src="{{selectedProduct.img.url}}" alt="" style="width: 400px; height: 400px;" onclick="">
-								<div class="spec_offer text-center"><a href="#">Closing soon!!</a></div>
+					<div class="home_search_container">
+						<div class="home_search_title">Register</div>
+						<form action="#" method="post" class="newsletter_form d-flex flex-md-row flex-column align-items-start justify-content-between" id="newsletter_form">
+							{%csrf_token%}
+							<div style="border-radius: 10px;">
+								<div style="border-radius: 10px; background: white; height: 250px;">
+									<input type="text" autocomplete="off" id='userName' name='userName' style="width: 45%; margin: 10px;background: #FFFFFF;    font-family: 'Oswald', sans-serif;font-size: 18px; color: #2e2e2e; font-weight: 400; text-align: center;" placeholder="Username" required="required">
+									<input type="password"  id='password' name="password" style="width: 45%; margin: 10px;background: #FFFFFF;    font-family: 'Oswald', sans-serif;font-size: 18px; color: #2e2e2e; font-weight: 400; text-align: center;"  placeholder="Password">
+									<input type="text" autocomplete="off" id='FirstName' name='FirstName' style="width: 45%;    margin: 10px;background: #FFFFFF;    font-family: 'Oswald', sans-serif;font-size: 18px; color: #2e2e2e; font-weight: 400; text-align: center;" placeholder="FirstName" required="required">
+									<input type="text" autocomplete="off" id='LastName' name='LastName' style="width: 45%;    margin: 10px;background: #FFFFFF;    font-family: 'Oswald', sans-serif;font-size: 18px; color: #2e2e2e; font-weight: 400; text-align: center;"  placeholder="LastNameame" required="required">
+									<input type="text" autocomplete="off" id='PhoneNumber' name='PhoneNumber' style="width: 45%;    margin: 10px;background: #FFFFFF;    font-family: 'Oswald', sans-serif;font-size: 18px; color: #2e2e2e; font-weight: 400; text-align: center;"  placeholder="PhoneNumber" required="required">
+									<input type="text" autocomplete="off" id='Email' name='Email' style="width: 45%;    margin: 10px;background: #FFFFFF;    font-family: 'Oswald', sans-serif;font-size: 18px; color: #2e2e2e; font-weight: 400; text-align: center;" placeholder="Email" required="required">
+									<button type="submit" style="width: 60%; margin-left: 200px;"  class="home_search_button">Register</button>
+									{% if messages %}
+									<ul class="messages" style="align-items: center; color: red;width: 60%;float: right;font-weight: bold;">
+										{% for message in messages %}
+										<li  {% if message.tags %} class=" {{ message.tags }} " {% endif %}> {{ message }} </li>
+										{% endfor %}
+									</ul>
+									{% endif %}
+								</div>
+									
 							</div>
-							<div class="destination_content" style="margin-left: 40px;">
-								<div class="destination_title"><a href="destinations">{{selectedProduct.name}}</a></div>
-								<div class="destination_specs">{{auctionedProduct.product_specifications}}</div>
-								<div class="destination_subtitle"><p style="font-size: 24px;margin-top: 20px;color: brown;">{{selectedProduct.desc}}</p></div>
-								<div class="destination_price">{{selectedProduct.price}}</div>
-								
-								<form action="#" method="post" id="newsletter_form">
-									{%csrf_token%}
-									<div style="margin-top: 20px;" >
-										<div style="margin-right:10px;background:grey; margin-bottom:10px; width: 200px; border-radius: 10px;"><input type="text" autocomplete="off" class="newsletter_input newsletter_input_name" id="bidamnt" name="bidamnt" placeholder="Bid amount" required="required"><div class="input_border"></div></div>
-										<div><button type="submit" class="newsletter_button" style="background:green; border-radius: 10px;">Bid</button></div>
-										<div style="margin-right:10px;display: none;"><input type="text"  class="newsletter_input newsletter_input_name" id="ProdId" name="ProdId" ><div class="input_border" style = "display:none"></div></div>
-									</div>
-								</form>
-							</div>
-						</div>
-
+						</form>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-	<div style="margin-left: 200px;margin-top:-100px">
-	<h1 style="color: black;">Auction History</h1>
-			<table border="1" width="600">
-			<tr>
-			<td>Username</td>
-			<td>Bid Value</td>
-			<td>Bid Date</td>
-			</tr>
-			{% for history in auctionHistory %}
-			<tr>
-			<td>{{history.username}}</td>
-			<td>{{history.auction_value}}</td>
-			<td>{{history.date}}</td>
-			</tr>
-			{% endfor %}
-			</table>
-	</div>
-	<div style="margin-top: 100px;"></div>
 </div>
 
 <script src="{%static 'js/jquery-3.2.1.min.js' %}"></script>
@@ -222,10 +166,7 @@
 <script src="{%static 'plugins/parallax-js-master/parallax.min.js' %}"></script>
 <script src="{%static 'js/custom.js' %}"></script>
 <script>
-    const urlParams = new URLSearchParams(window.location.search);
-	const myParam = urlParams.get('prodId');
-	document.getElementById('ProdId').value = myParam;
-		
+    
 </script>
 </body>
 </html>

@@ -5,23 +5,26 @@ from django.contrib import messages
 
 def index(request):
     products=productdetails.objects.all()
-    return render(request,"index.html",{"products":products})
+    return render(request,"index.html",{"products":products, "Username":request.session['userName']})
+
 def login(request):
     if(request.method=="POST"):
         userName=request.POST['userName']
         password=request.POST['password']
-        print(userName)
-        print(password)
         if(user.objects.all().filter(username=userName,  password=password).exists()):
+            request.session['userName']=userName
+            request.session['phoneno']=user.objects.get(username=userName).phone_no
+            request.session['email']=user.objects.get(username=userName).email
             return HttpResponseRedirect('/index')
         messages.success(request, 'Invalid credentials')
     return render(request,"login.html")    
+
 def destinations(request):
     if(request.method=="POST"):
         prodId=request.POST['ProdId']
-        name=request.POST['bidname']
-        phoneno=request.POST['phoneno']
-        email=request.POST['email']
+        name=request.session['userName']
+        phoneno=request.session['phoneno']
+        email=request.session['email']
         amt=request.POST['bidamnt']
         ins=auction_history(username=name, phone_no=phoneno, email=email, auction_value=amt,product_id=prodId) 
         ins.save()   
@@ -29,10 +32,26 @@ def destinations(request):
     auctionHistory = auction_history.objects.filter(product_id=int(request.GET['prodId']))
     product = productdetails.objects.get(product_id=int(request.GET['prodId']))
     return render(request,"destinations.html", {"selectedProduct":product, "auctionedProduct": auctionProduct, "auctionHistory":auctionHistory}) 
+
 def news(request):
     return render(request,"news.html")
-def elements(request):
-    return render(request,"elements.html")   
+
+def register(request):
+    if(request.method=="POST"):
+        userName=request.POST['userName']
+        password=request.POST['password']
+        first_name=request.POST['FirstName']
+        last_name=request.POST['LastName']
+        phone_no=request.POST['PhoneNumber']
+        email=request.POST['Email']
+        if(user.objects.all().filter(username=userName).exists()):
+            messages.success(request, 'Username already exists')
+            return HttpResponseRedirect('/register') 
+        ins=user(username=userName, password=password, first_name=first_name, last_name=last_name, phone_no=phone_no, email=email) 
+        ins.save()
+        return HttpResponseRedirect('/') 
+    return render(request,"register.html") 
+
 def search(request):
     products=productdetails.objects.all().filter(name__icontains=request.GET['prodName'], 
                                                 desc__icontains=request.GET['manufacturerName'])
