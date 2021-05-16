@@ -176,14 +176,20 @@
 								<div class="destination_subtitle"><p style="font-size: 24px;margin-top: 20px;color: brown;">{{selectedProduct.desc}}</p></div>
 								<div class="destination_price">{{selectedProduct.price}}</div>
 								
+								{% if auctionedProduct.closing_time >= datetime.datetime.now %}
 								<form action="#" method="post" id="newsletter_form">
 									{%csrf_token%}
 									<div style="margin-top: 20px;" >
 										<div style="margin-right:10px;background:grey; margin-bottom:10px; width: 200px; border-radius: 10px;"><input type="text" autocomplete="off" class="newsletter_input newsletter_input_name" id="bidamnt" name="bidamnt" placeholder="Bid amount" required="required"><div class="input_border"></div></div>
 										<div><button type="submit" class="newsletter_button" style="background:green; border-radius: 10px;">Bid</button></div>
-										<div style="margin-right:10px;display: none;"><input type="text"  class="newsletter_input newsletter_input_name" id="ProdId" name="ProdId" ><div class="input_border" style = "display:none"></div></div>
+												<div style="margin-right:10px;display: none;"><input type="text"  class="newsletter_input newsletter_input_name" id="ProdId" name="ProdId" ><div class="input_border" style = "display:none"></div></div>
+										
 									</div>
 								</form>
+								{% else %}
+								<div style="font-size: 50px;color:red;">Auction is closed!!</div>
+								<div>The product was awarded to: <b style="font-size: 20px;color:green;">{{highestBid.username}}</b></div>
+								{% endif %}
 							</div>
 						</div>
 

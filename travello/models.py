@@ -8,17 +8,20 @@ class user(models.Model):
     last_name=models.CharField(max_length=30)
     phone_no=models.CharField(max_length=30,default="")
     email=models.CharField(max_length=30)
+
 class productdetails(models.Model):
     product_id=models.IntegerField()
     name=models.CharField(max_length=30)
     img=models.ImageField(upload_to='pics')
     desc=models.CharField(max_length=100)
     price=models.IntegerField()
+
 class auctiondetails(models.Model):
     product_id=models.IntegerField()
     product_specifications=models.TextField()
     current_bid=models.IntegerField()
     closing_time=models.DateTimeField()
+
 class auction_history(models.Model):
     product_id=models.IntegerField()
     username=models.CharField(max_length=30)
