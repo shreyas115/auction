@@ -33,12 +33,11 @@ def destinations(request):
     auctionHistory = auction_history.objects.filter(product_id=int(request.GET['prodId']))
     product = productdetails.objects.get(product_id=int(request.GET['prodId']))
     max_bid = auction_history.objects.filter(product_id=int(request.GET['prodId'])).aggregate(maxbid=Max('auction_value'))['maxbid']
-    highestBid=auction_history.objects.get(product_id=int(request.GET['prodId']), auction_value=max_bid)
-    #print(highestBid.value)
+    try:
+        highestBid=auction_history.objects.get(product_id=int(request.GET['prodId']), auction_value=max_bid)
+    except auction_history.DoesNotExist:
+        highestBid = None
     return render(request,"destinations.html", {"selectedProduct":product, "auctionedProduct": auctionProduct, "auctionHistory":auctionHistory, "highestBid":highestBid}) 
-
-def news(request):
-    return render(request,"news.html")
 
 def register(request):
     if(request.method=="POST"):

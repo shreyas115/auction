@@ -234,6 +234,7 @@
 					<div class="section_title"><h2>Popular Products</h2></div>
 				</div>
 			</div>
+			<div style="font-size: 25px; margin-left: 150px; margin-top: 30px; color: blue;">To bid and view more information about the product, click on the product</div>
 			<div class="row destinations_row">
 				<div class="col">
 					<div class="destinations_container item_grid">
@@ -241,12 +242,12 @@
 						<!-- Destination -->
 						<div class="destination item">
 							<div class="destination_image">
-								<img src="{{prod.img.url}}" alt="" style="width: 200px; height: 200px;" onclick="">
+								<img src="{{prod.img.url}}" alt="" style="width: 200px; height: 200px;" onclick="GoToProductDetails('{{prod.product_id}}')">
 							</div>
 							<div class="destination_content">
 								<div class="destination_title"><a onclick="GoToProductDetails('{{prod.product_id}}')">{{prod.name}}</a></div>
-								<div class="destination_subtitle"><p>{{prod.desc}}</p></div>
-								<div class="destination_price">{{prod.price}}</div>
+								<div class="destination_subtitle"><a onclick="GoToProductDetails('{{prod.product_id}}')"><p>{{prod.desc}}</p></a></div>
+								<div class="destination_price"><a onclick="GoToProductDetails('{{prod.product_id}}')">{{prod.price}}</a></div>
 							</div>
 						</div>
 						{% endfor %}

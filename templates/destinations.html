@@ -168,15 +168,14 @@
 						<div class="destination item" style="float:left;width:100%;display: flex;">
 							<div class="destination_image">
 								<img src="{{selectedProduct.img.url}}" alt="" style="width: 400px; height: 400px;" onclick="">
-								<div class="spec_offer text-center"><a href="#">Closing soon!!</a></div>
 							</div>
 							<div class="destination_content" style="margin-left: 40px;">
 								<div class="destination_title"><a href="destinations">{{selectedProduct.name}}</a></div>
 								<div class="destination_specs">{{auctionedProduct.product_specifications}}</div>
 								<div class="destination_subtitle"><p style="font-size: 24px;margin-top: 20px;color: brown;">{{selectedProduct.desc}}</p></div>
 								<div class="destination_price">{{selectedProduct.price}}</div>
-								
-								{% if auctionedProduct.closing_time >= datetime.datetime.now %}
+								{% now "Y-m-d" as todays_date %}
+								{% if  todays_date < auctionedProduct.closing_time|date:"Y-m-d" %}
 								<form action="#" method="post" id="newsletter_form">
 									{%csrf_token%}
 									<div style="margin-top: 20px;" >
@@ -230,8 +229,7 @@
 <script>
     const urlParams = new URLSearchParams(window.location.search);
 	const myParam = urlParams.get('prodId');
-	document.getElementById('ProdId').value = myParam;
-		
+	document.getElementById('ProdId').value = myParam;	
 </script>
 </body>
 </html>

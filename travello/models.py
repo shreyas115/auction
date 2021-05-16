@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from datetime import date
 # Create your models here.
 class user(models.Model):
     username=models.CharField(max_length=30)
@@ -29,3 +30,9 @@ class auction_history(models.Model):
     phone_no=models.CharField(max_length=20,default="")
     email=models.CharField(max_length=30,default="")
     date=models.DateField(default=datetime.datetime.now)
+
+@property
+def is_past_due(self):
+    #print(date.today())
+    #print(self.date)
+    return date.today() > self.date
