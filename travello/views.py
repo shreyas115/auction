@@ -2,6 +2,7 @@ from django.shortcuts import render
 from .models import productdetails, auctiondetails, auction_history, user
 from django.http import HttpResponseRedirect
 from django.contrib import messages
+from django.db.models import Max
 
 def index(request):
     products=productdetails.objects.all()
@@ -31,7 +32,10 @@ def destinations(request):
     auctionProduct = auctiondetails.objects.get(product_id=int(request.GET['prodId']))
     auctionHistory = auction_history.objects.filter(product_id=int(request.GET['prodId']))
     product = productdetails.objects.get(product_id=int(request.GET['prodId']))
-    return render(request,"destinations.html", {"selectedProduct":product, "auctionedProduct": auctionProduct, "auctionHistory":auctionHistory}) 
+    max_bid = auction_history.objects.filter(product_id=int(request.GET['prodId'])).aggregate(maxbid=Max('auction_value'))['maxbid']
+    highestBid=auction_history.objects.get(product_id=int(request.GET['prodId']), auction_value=max_bid)
+    #print(highestBid.value)
+    return render(request,"destinations.html", {"selectedProduct":product, "auctionedProduct": auctionProduct, "auctionHistory":auctionHistory, "highestBid":highestBid}) 
 
 def news(request):
     return render(request,"news.html")
