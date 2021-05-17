@@ -31,11 +31,11 @@
 							<div class="logo"><a href="">Auction</a></div>
 							<nav class="main_nav">
 								<ul class="d-flex flex-row align-items-start justify-content-start">
-									<li class="active"><a href="/">Home</a></li>
-									<li><a href="about.html">About us</a></li>
+									<li class="active"><a href="index">Home</a></li>
+									<!--<li><a href="about.html">About us</a></li>
 									<li><a href="#">Services</a></li>
-									<li><a href="news">News</a></li>
-									<li><a href="contact.html">Contact</a></li>
+									<li><a href="news">News</a></li>-->
+									<li><a href="/">Logout</a></li>
 								</ul>
 							</nav>
 							<div class="header_phone ml-auto">Call us:1800-CALL-SHRE</div>
@@ -72,11 +72,11 @@
 		</div>
 		<div class="menu_content">
 			<ul>
-				<li><a href="index.html">Home</a></li>
-				<li><a href="about.html">About us</a></li>
+				<li><a href="index">Home</a></li>
+				<!--<li><a href="about.html">About us</a></li>
 				<li><a href="#">Services</a></li>
-				<li><a href="news">News</a></li>
-				<li><a href="contact.html">Contact</a></li>
+				<li><a href="news">News</a></li>-->
+				<li><a href="/">Logout</a></li>
 			</ul>
 		</div>
 		<div class="menu_social">
@@ -173,7 +173,7 @@
 								<div class="destination_title"><a href="destinations">{{selectedProduct.name}}</a></div>
 								<div class="destination_specs">{{auctionedProduct.product_specifications}}</div>
 								<div class="destination_subtitle"><p style="font-size: 24px;margin-top: 20px;color: brown;">{{selectedProduct.desc}}</p></div>
-								<div class="destination_price">{{selectedProduct.price}}</div>
+								<div class="destination_price">Starting price: {{selectedProduct.price}}</div>
 								{% now "Y-m-d" as todays_date %}
 								{% if  todays_date < auctionedProduct.closing_time|date:"Y-m-d" %}
 								<form action="#" method="post" id="newsletter_form">
